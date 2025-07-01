@@ -1,6 +1,6 @@
 import M from "materialize-css";
 import { useEffect, useState } from "react";
-import "../global.css"
+import "../styles/global.css";
 import { clientes, produtos, servicos } from "../dados";
 
 interface Props {
@@ -120,7 +120,6 @@ export default function FormularioCadastroProduto({ tema }: Props) {
         }}
       >
         <div className="card-content">
-          {/* Criar Produto */}
           <form className="row" onSubmit={criarProduto}>
             <h4 className="pink-text text-lighten-1">CRIAR PRODUTO</h4>
             <div className="row">
@@ -140,57 +139,54 @@ export default function FormularioCadastroProduto({ tema }: Props) {
         </div>
       </div>
 
-            <div
-                className="card white z-depth-2"
-                style={{
-                    width: '90%',
-                    margin: '20px auto',
-                    padding: '10px'
-                }}
-            >
-                <div className="card-content">
-      {/* Remover Produto */}
-      <form className="row" onSubmit={deletarProduto}>
-        <h4 className="pink-text text-lighten-1">REMOVER PRODUTO</h4>
-        <div className="row">
-          <div className="input-field col s12 m6">
-            <input id="nome_remover_produto" type="text" value={nomeRemover} onChange={(e) => setNomeRemover(e.target.value)} required />
-            <label htmlFor="nome_remover_produto" className={nomeRemover ? "active" : ""}>Nome*</label>
-          </div>
+      <div
+        className="card white z-depth-2"
+        style={{
+          width: '90%',
+          margin: '20px auto',
+          padding: '10px'
+        }}
+      >
+        <div className="card-content">
+          <form className="row" onSubmit={deletarProduto}>
+            <h4 className="pink-text text-lighten-1">REMOVER PRODUTO</h4>
+            <div className="row">
+              <div className="input-field col s12 m6">
+                <input id="nome_remover_produto" type="text" value={nomeRemover} onChange={(e) => setNomeRemover(e.target.value)} required />
+                <label htmlFor="nome_remover_produto" className={nomeRemover ? "active" : ""}>Nome*</label>
+              </div>
+            </div>
+            <button className={estiloBotao} type="submit" disabled={loading}>
+              {loading ? "Removendo..." : "Remover"} <i className="material-icons right">highlight_off</i>
+            </button>
+          </form>
         </div>
-        <button className={estiloBotao} type="submit" disabled={loading}>
-          {loading ? "Removendo..." : "Remover"} <i className="material-icons right">highlight_off</i>
-        </button>
-      </form>
-      </div>
       </div>
 
-            <div
-                className="card white z-depth-2"
-                style={{
-                    width: '90%',
-                    margin: '20px auto',
-                    padding: '10px'
-                }}
-            >
-                <div className="card-content">
-      {/* Atualizar Produto */}
-      <form className="row">
-        <h4 className="pink-text text-lighten-1">ATUALIZAR PRODUTO</h4>
-        <div className="row">
-          <div className="input-field col s12 m6">
-            <input id="nome_antigo_produto" type="text" value={nomeAntigo} onChange={(e) => setNomeAntigo(e.target.value)} required />
-            <label htmlFor="nome_antigo_produto" className={nomeAntigo ? "active" : ""}>Nome Antigo*</label>
-          </div>
+      <div
+        className="card white z-depth-2"
+        style={{
+          width: '90%',
+          margin: '20px auto',
+          padding: '10px'
+        }}
+      >
+        <div className="card-content">
+          <form className="row">
+            <h4 className="pink-text text-lighten-1">ATUALIZAR PRODUTO</h4>
+            <div className="row">
+              <div className="input-field col s12 m6">
+                <input id="nome_antigo_produto" type="text" value={nomeAntigo} onChange={(e) => setNomeAntigo(e.target.value)} required />
+                <label htmlFor="nome_antigo_produto" className={nomeAntigo ? "active" : ""}>Nome Antigo*</label>
+              </div>
+            </div>
+            <button className={estiloBotao} type="button" onClick={abrirModalAtualizar} disabled={loading}>
+              {loading ? "Buscando..." : "Buscar"} <i className="material-icons right">search</i>
+            </button>
+          </form>
         </div>
-        <button className={estiloBotao} type="button" onClick={abrirModalAtualizar} disabled={loading}>
-          {loading ? "Buscando..." : "Buscar"} <i className="material-icons right">search</i>
-        </button>
-      </form>
-      </div>
       </div>
 
-      {/* Modal de Atualização */}
       <div id="modalProduto" className="modal">
         <div className="modal-content">
           <form className="col s12" onSubmit={atualizarProduto}>

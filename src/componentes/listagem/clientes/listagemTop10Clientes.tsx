@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import 'materialize-css/dist/css/materialize.min.css';
 import M from 'materialize-css';
-import "../../../global.css"
+import "../../../styles/global.css";
 
 type Props = {
   tema: string;
@@ -14,7 +14,6 @@ interface ClienteMaisConsumidor {
   totalConsumido: number;
 }
 
-// Dados fictícios para clientes que mais consumiram e menos consumiram
 const clientesTop10MaisConsumiram: ClienteMaisConsumidor[] = [
   { id: 1, nome: "Sarah Oliveira", nomeSocial: "Sarah", totalConsumido: 3000 },
   { id: 2, nome: "Alinne Costa", nomeSocial: "Alinne", totalConsumido: 2500 },
@@ -45,11 +44,8 @@ export function ListagemTop10ClientesMaisConsumiram({ tema }: Props) {
   const [clientes, setClientes] = useState<ClienteMaisConsumidor[]>([]);
 
   useEffect(() => {
-    // Inicializa o colapsável do Materialize
     const elems = document.querySelectorAll('.collapsible');
     M.Collapsible.init(elems);
-
-    // Usando dados locais (fictícios)
     setClientes(clientesTop10MaisConsumiram);
   }, []);
 
@@ -82,11 +78,8 @@ export function ListagemTop10ClientesMenosConsumiram({ tema }: Props) {
   const [clientes, setClientes] = useState<ClienteMaisConsumidor[]>([]);
 
   useEffect(() => {
-    // Inicializa o colapsável do Materialize
     const elems = document.querySelectorAll('.collapsible');
     M.Collapsible.init(elems);
-
-    // Usando dados locais (fictícios)
     setClientes(clientesTop10MenosConsumiram);
   }, []);
 

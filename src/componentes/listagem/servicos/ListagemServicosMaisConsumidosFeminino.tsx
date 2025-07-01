@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import 'materialize-css/dist/css/materialize.min.css';
 import M from 'materialize-css';
-import "../../../global.css"
+import "../../../styles/global.css";
 
 interface ServicoMaisConsumido {
   id: number;
@@ -14,7 +14,6 @@ interface Props {
   tema: string;
 }
 
-// Dados fictícios de serviços mais consumidos para o gênero feminino
 const servicosMaisConsumidosFemininoFicticios: ServicoMaisConsumido[] = [
   { id: 1, nome: "Manicure", preco: 40.0, totalClientes: 1500 },
   { id: 2, nome: "Corte de Cabelo", preco: 80.0, totalClientes: 1200 },
@@ -33,7 +32,6 @@ export default function ListagemServicosMaisConsumidosFeminino({ tema }: Props) 
   const [erro, setErro] = useState<string | null>(null);
 
   useEffect(() => {
-    // Em vez de fazer a requisição, usamos os dados locais
     setServicos(servicosMaisConsumidosFemininoFicticios);
   }, []);
 

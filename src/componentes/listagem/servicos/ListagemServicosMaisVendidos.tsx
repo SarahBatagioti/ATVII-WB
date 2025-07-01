@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import 'materialize-css/dist/css/materialize.min.css';
 import M from 'materialize-css';
-import "../../../global.css"
+import "../../../styles/global.css";
 
 interface ServicoMaisVendido {
   id: number;
@@ -14,7 +14,6 @@ interface Props {
   tema: string;
 }
 
-// Dados fictícios de serviços mais vendidos
 const servicosMaisVendidosFicticios: ServicoMaisVendido[] = [
   { id: 1, nome: "Corte de Cabelo", preco: 80.0, quantidadeVendida: 1500 },
   { id: 2, nome: "Manicure", preco: 40.0, quantidadeVendida: 1200 },
@@ -33,7 +32,6 @@ export default function ListagemServicosMaisVendidos({ tema }: Props) {
   const [erro, setErro] = useState<string | null>(null);
 
   useEffect(() => {
-    // Usando dados locais (fictícios) em vez da requisição
     setServicos(servicosMaisVendidosFicticios);
   }, []);
 

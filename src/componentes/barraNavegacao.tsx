@@ -1,15 +1,15 @@
 import { Component } from "react";
-import 'materialize-css/dist/css/materialize.min.css'
-import M from 'materialize-css'
-import "../global.css"
+import 'materialize-css/dist/css/materialize.min.css';
+import M from 'materialize-css';
+import "../styles/global.css";
 import { useEffect, useState } from "react";
-
 
 interface Props {
     tema: string,
     botoes: string[],
     seletorView: Function
 }
+
 const gerarListaBotoes = (data: Props) => {
     if (data.botoes.length <= 0) {
         return <></>
@@ -47,7 +47,6 @@ export default function BarraNavegacao(data: Props) {
                             alt="Logo WB"
                             className="logo-wb"
                         />
-
                     </a>
 
                     <a href="#" data-target="mobile-menu" className="sidenav-trigger" style={{ cursor: 'pointer' }}>

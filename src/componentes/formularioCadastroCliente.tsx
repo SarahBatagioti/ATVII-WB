@@ -1,29 +1,29 @@
 import { useEffect, useState, FormEvent } from "react";
 import M from "materialize-css";
 import FormSelector from "./formularioAdicionarDadosCliente";
-import "../global.css"
+import "../styles/global.css";
 import { clientes, produtos, servicos } from "../dados";
 
 interface Props {
-    tema: string
+    tema: string;
 }
 
 interface ClienteInput {
-    nome: string
-    nomeSocial: string
-    genero: string
+    nome: string;
+    nomeSocial: string;
+    genero: string;
     cpf: {
-        valor: string
-        dataEmissao: string
-    }
+        valor: string;
+        dataEmissao: string;
+    };
     rg?: {
-        valor: string
-        dataEmissao: string
-    }[]
+        valor: string;
+        dataEmissao: string;
+    }[];
     telefone?: {
-        ddd: string
-        numero: string
-    }[]
+        ddd: string;
+        numero: string;
+    }[];
 }
 
 export default function FormularioCadastroCliente(data: Props) {
@@ -274,7 +274,6 @@ export default function FormularioCadastroCliente(data: Props) {
                 }}
             >
                 <div className="card-content">
-                    {/* Adicionar Dados ao Cliente */}
                     <form className="row">
                         <h4 className="pink-text text-lighten-1">ADICIONAR DADOS AO CLIENTE</h4>
                         <div className="row">
@@ -300,7 +299,6 @@ export default function FormularioCadastroCliente(data: Props) {
                 }}
             >
                 <div className="card-content">
-                    {/* Remover Cliente */}
                     <form className="row" onSubmit={(e) => { e.preventDefault(); handleRemoverCliente(); }}>
                         <h4 className="pink-text text-lighten-1">REMOVER CLIENTE</h4>
                         <div className="row">

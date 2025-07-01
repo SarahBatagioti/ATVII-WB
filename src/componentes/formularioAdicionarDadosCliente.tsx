@@ -1,6 +1,6 @@
 import { useState } from "react";
 import M from "materialize-css";
-import "../global.css"
+import "../styles/global.css";
 
 interface Props {
     cpf: string;
@@ -20,7 +20,6 @@ const FormSelector = ({ cpf, tema }: Props) => {
         if (!cpf) return M.toast({ html: "Informe o CPF", classes: "red" });
 
         try {
-            // Buscar cliente pelo CPF
             const res = await fetch(`http://localhost:3307/clientes/cpf/${cpf}`);
             if (!res.ok) throw new Error("Cliente não encontrado");
             const cliente = await res.json();
@@ -60,7 +59,6 @@ const FormSelector = ({ cpf, tema }: Props) => {
                     return;
             }
 
-            // Enviar os dados
             const response = await fetch(`http://localhost:3307${endpoint}`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },

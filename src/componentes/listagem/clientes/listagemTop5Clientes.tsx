@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import 'materialize-css/dist/css/materialize.min.css';
 import M from 'materialize-css';
-import "../../../global.css"
+import "../../../styles/global.css";
 
 type Props = {
     tema: string;
@@ -14,7 +14,6 @@ interface ClienteTopGasto {
     valorTotalGasto: number;
 }
 
-// Dados fictícios
 const clientesTopGastoFicticios: ClienteTopGasto[] = [
     {
         id: 1,
@@ -52,11 +51,8 @@ export default function ListagemTop5Clientes({ tema }: Props) {
     const [clientes, setClientes] = useState<ClienteTopGasto[]>([]);
 
     useEffect(() => {
-        // Inicializa o colapsável do Materialize
         const elems = document.querySelectorAll('.collapsible');
         M.Collapsible.init(elems);
-
-        // Substitui o fetch com dados locais
         setClientes(clientesTopGastoFicticios);
     }, []);
 

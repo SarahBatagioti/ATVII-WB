@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
 import M from "materialize-css";
-import "../global.css"
+import { useEffect, useState } from "react";
+import "../styles/global.css";
 import { clientes, produtos, servicos } from "../dados";
 
 interface Props {
@@ -103,122 +103,119 @@ export default function FormularioCadastroServico({ tema }: Props) {
 
   return (
     <div className="row">
-                  <div
-                className="card white z-depth-2"
-                style={{
-                    width: '90%',
-                    margin: '20px auto',
-                    padding: '10px'
-                }}
-            >
-                <div className="card-content">
-      {/* Criar Serviço */}
-      <form className="row" onSubmit={criarServico}>
-        <h4 className="pink-text text-lighten-1">CRIAR SERVIÇO</h4>
-        <div className="row">
-          <div className="input-field col s12 m6">
-            <input
-              id="nome_criar_servico"
-              type="text"
-              value={nomeCriar}
-              onChange={(e) => setNomeCriar(e.target.value)}
-              required
-            />
-            <label htmlFor="nome_criar_servico" className={nomeCriar ? "active" : ""}>
-              Nome*
-            </label>
-          </div>
-          <div className="input-field col s12 m6">
-            <input
-              id="preco_criar_servico"
-              type="number"
-              min="0.01"
-              step="0.01"
-              value={precoCriar}
-              onChange={(e) => setPrecoCriar(e.target.value)}
-              required
-            />
-            <label htmlFor="preco_criar_servico" className={precoCriar ? "active" : ""}>
-              Preço*
-            </label>
-          </div>
+      <div
+        className="card white z-depth-2"
+        style={{
+          width: '90%',
+          margin: '20px auto',
+          padding: '10px'
+        }}
+      >
+        <div className="card-content">
+          <form className="row" onSubmit={criarServico}>
+            <h4 className="pink-text text-lighten-1">CRIAR SERVIÇO</h4>
+            <div className="row">
+              <div className="input-field col s12 m6">
+                <input
+                  id="nome_criar_servico"
+                  type="text"
+                  value={nomeCriar}
+                  onChange={(e) => setNomeCriar(e.target.value)}
+                  required
+                />
+                <label htmlFor="nome_criar_servico" className={nomeCriar ? "active" : ""}>
+                  Nome*
+                </label>
+              </div>
+              <div className="input-field col s12 m6">
+                <input
+                  id="preco_criar_servico"
+                  type="number"
+                  min="0.01"
+                  step="0.01"
+                  value={precoCriar}
+                  onChange={(e) => setPrecoCriar(e.target.value)}
+                  required
+                />
+                <label htmlFor="preco_criar_servico" className={precoCriar ? "active" : ""}>
+                  Preço*
+                </label>
+              </div>
+            </div>
+            <button className={estiloBotao} type="submit">
+              Enviar
+              <i className="material-icons right">send</i>
+            </button>
+          </form>
         </div>
-        <button className={estiloBotao} type="submit">
-          Enviar
-          <i className="material-icons right">send</i>
-        </button>
-      </form>
-      </div>
       </div>
 
-                  <div
-                className="card white z-depth-2"
-                style={{
-                    width: '90%',
-                    margin: '20px auto',
-                    padding: '10px'
-                }}
-            >
-                <div className="card-content">
-      <form className="row" onSubmit={deletarServico}>
-        <h4 className="pink-text text-lighten-1">REMOVER SERVIÇO</h4>
-        <div className="row">
-          <div className="input-field col s12 m6">
-            <input
-              id="nome_remover_servico"
-              type="text"
-              value={nomeRemover}
-              onChange={(e) => setNomeRemover(e.target.value)}
-              required
-            />
-            <label htmlFor="nome_remover_servico" className={nomeRemover ? "active" : ""}>
-              Nome*
-            </label>
-          </div>
+      <div
+        className="card white z-depth-2"
+        style={{
+          width: '90%',
+          margin: '20px auto',
+          padding: '10px'
+        }}
+      >
+        <div className="card-content">
+          <form className="row" onSubmit={deletarServico}>
+            <h4 className="pink-text text-lighten-1">REMOVER SERVIÇO</h4>
+            <div className="row">
+              <div className="input-field col s12 m6">
+                <input
+                  id="nome_remover_servico"
+                  type="text"
+                  value={nomeRemover}
+                  onChange={(e) => setNomeRemover(e.target.value)}
+                  required
+                />
+                <label htmlFor="nome_remover_servico" className={nomeRemover ? "active" : ""}>
+                  Nome*
+                </label>
+              </div>
+            </div>
+            <button className={estiloBotao} type="submit">
+              Remover
+              <i className="material-icons right">highlight_off</i>
+            </button>
+          </form>
         </div>
-        <button className={estiloBotao} type="submit">
-          Remover
-          <i className="material-icons right">highlight_off</i>
-        </button>
-      </form>
-      </div>
       </div>
 
-                  <div
-                className="card white z-depth-2"
-                style={{
-                    width: '90%',
-                    margin: '20px auto',
-                    padding: '10px'
-                }}
-            >
-                <div className="card-content">
-      {/* Atualizar Serviço */}
-      <form className="row">
-        <h4 className="pink-text text-lighten-1">ATUALIZAR SERVIÇO</h4>
-        <div className="row">
-          <div className="input-field col s12 m6">
-            <input
-              id="nome_atualizar_servico"
-              type="text"
-              value={nomeAtualizar}
-              onChange={(e) => setNomeAtualizar(e.target.value)}
-              required
-            />
-            <label htmlFor="nome_atualizar_servico" className={nomeAtualizar ? "active" : ""}>
-              Nome Antigo*
-            </label>
-          </div>
+      <div
+        className="card white z-depth-2"
+        style={{
+          width: '90%',
+          margin: '20px auto',
+          padding: '10px'
+        }}
+      >
+        <div className="card-content">
+          <form className="row">
+            <h4 className="pink-text text-lighten-1">ATUALIZAR SERVIÇO</h4>
+            <div className="row">
+              <div className="input-field col s12 m6">
+                <input
+                  id="nome_antigo_servico"
+                  type="text"
+                  value={nomeAtualizar}
+                  onChange={(e) => setNomeAtualizar(e.target.value)}
+                  required
+                />
+                <label htmlFor="nome_antigo_servico" className={nomeAtualizar ? "active" : ""}>
+                  Nome Antigo*
+                </label>
+              </div>
+            </div>
+            <button className={estiloBotao} type="button" onClick={abrirModalAtualizar}>
+              Buscar
+              <i className="material-icons right">search</i>
+            </button>
+          </form>
         </div>
-        <button className={estiloBotao} type="button" onClick={abrirModalAtualizar}>
-          Buscar
-          <i className="material-icons right">search</i>
-        </button>
-      </form>
-      </div>
       </div>
 
-      {/* Modal de Atualização */}
       <div id="modalServico" className="modal">
         <div className="modal-content">
           <form className="col s12" onSubmit={atualizarServico}>

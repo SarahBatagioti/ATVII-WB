@@ -4,7 +4,7 @@ import FormularioCadastroCliente from "./formularioCadastroCliente";
 import Relatórios from "./consulta";
 import FormularioCadastroServico from "./formularioCadastroServico";
 import FormularioCadastroProduto from "./formularioCadastroProduto";
-import "../global.css"
+import "../styles/global.css";
 import { clientes, produtos, servicos } from "../dados";
 
 

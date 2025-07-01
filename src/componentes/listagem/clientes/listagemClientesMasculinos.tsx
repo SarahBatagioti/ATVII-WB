@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import 'materialize-css/dist/css/materialize.min.css';
 import M from 'materialize-css';
-import "../../../global.css"
+import "../../../styles/global.css";
 
-// Substituindo os dados fictícios diretamente no código
 const clientesMasculinosFicticios = [
   {
     nome: "Vinicius Lima",
@@ -89,10 +88,7 @@ export default function ListagemClientesMasculinos({ tema }: Props) {
   const [clientes, setClientes] = useState<ClienteAPI[]>([]);
 
   useEffect(() => {
-    // Não é mais necessário o fetch. Vamos definir os dados manualmente.
     setClientes(clientesMasculinosFicticios);
-
-    // Inicializa o componente collapsible do Materialize CSS
     const elems = document.querySelectorAll('.collapsible');
     M.Collapsible.init(elems);
   }, []);
@@ -116,9 +112,7 @@ export default function ListagemClientesMasculinos({ tema }: Props) {
                   <p><strong>CPF:</strong> {cliente.cpf.valor}</p>
                   <p><strong>Data de Emissão do CPF:</strong> {new Date(cliente.cpf.dataEmissao).toLocaleDateString()}</p>
                 </div>
-
                 <div className="divider"></div>
-
                 <div className="section">
                   <h6 className="pink-text text-lighten-1">RG(s)</h6>
                   <ul>
@@ -129,9 +123,7 @@ export default function ListagemClientesMasculinos({ tema }: Props) {
                     ))}
                   </ul>
                 </div>
-
                 <div className="divider"></div>
-
                 <div className="section">
                   <h6 className="pink-text text-lighten-1">Telefones</h6>
                   <ul>
@@ -142,9 +134,7 @@ export default function ListagemClientesMasculinos({ tema }: Props) {
                     ))}
                   </ul>
                 </div>
-
                 <div className="divider"></div>
-
                 <div className="section">
                   <h6 className="pink-text text-lighten-1">Produtos Consumidos</h6>
                   <ul>
@@ -155,9 +145,7 @@ export default function ListagemClientesMasculinos({ tema }: Props) {
                     ))}
                   </ul>
                 </div>
-
                 <div className="divider"></div>
-
                 <div className="section">
                   <h6 className="pink-text text-lighten-1">Serviços Consumidos</h6>
                   <ul>
@@ -172,7 +160,6 @@ export default function ListagemClientesMasculinos({ tema }: Props) {
             </li>
           ))}
         </ul>
-
         <div className="center-align">
           <a className={`btn-floating btn-large waves-effect waves-light ${tema}`}>
             <i className="material-icons">arrow_back</i>

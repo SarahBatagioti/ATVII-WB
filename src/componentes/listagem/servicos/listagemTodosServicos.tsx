@@ -2,13 +2,12 @@ import { useEffect, useState } from 'react';
 import 'materialize-css/dist/css/materialize.min.css';
 import M from 'materialize-css';
 import Servico from "../../../modelo/Servico";
-import "../../../global.css"
+import "../../../styles/global.css";
 
 interface Props {
   tema: string;
 }
 
-// Dados fictícios de serviços
 const servicosFicticios: Servico[] = [
   new Servico("Corte de Cabelo", 80.0),
   new Servico("Manicure", 40.0),
@@ -26,12 +25,10 @@ export default function ListagemTodosServicos({ tema }: Props) {
   const [servicos, setServicos] = useState<Servico[]>([]);
   const [erro, setErro] = useState<string | null>(null);
 
-  // Em vez de fazer a requisição, usamos os dados locais (fictícios)
   useEffect(() => {
     setServicos(servicosFicticios);
   }, []);
 
-  // Inicializa o collapsible sempre que os serviços mudarem
   useEffect(() => {
     const elems = document.querySelectorAll('.collapsible');
     M.Collapsible.init(elems);

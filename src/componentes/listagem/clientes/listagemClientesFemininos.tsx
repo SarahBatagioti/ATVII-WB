@@ -1,70 +1,69 @@
 import { useEffect, useState } from "react";
 import 'materialize-css/dist/css/materialize.min.css';
 import M from 'materialize-css';
-import "../../../global.css"
+import "../../../styles/global.css";
 
-// Substituindo os dados fictícios diretamente no código
 const clientesFicticios = [
   {
-        nome: "Sarah Oliveira",
-        nomeSocial: "Sarah",
-        genero: "Feminino",
-        cpf: { valor: "123.321.456-99", dataEmissao: "2017-07-21" },
-        rg: [{ valor: "MG-23.456.789", dataEmissao: "2017-07-18" }],
-        telefone: [{ ddd: "11", numero: "981234567" }],
-        produto: [{ nome: "Produto D", preco: 130.0 }],
-        servico: [{ nome: "Serviço A", preco: 60.0 }]
-    },
-    {
-        nome: "Alinne Costa",
-        nomeSocial: "Alinne",
-        genero: "Feminino",
-        cpf: { valor: "987.654.111-00", dataEmissao: "2019-02-12" },
-        rg: [{ valor: "SP-12.345.678", dataEmissao: "2019-02-08" }],
-        telefone: [{ ddd: "21", numero: "992345678" }],
-        produto: [{ nome: "Produto E", preco: 250.0 }],
-        servico: [{ nome: "Serviço B", preco: 100.0 }]
-    },
-    {
-        nome: "Valdirene Silva",
-        nomeSocial: "Valdirene",
-        genero: "Feminino",
-        cpf: { valor: "111.222.333-44", dataEmissao: "2020-01-15" },
-        rg: [{ valor: "SP-32.654.876", dataEmissao: "2020-01-10" }],
-        telefone: [{ ddd: "22", numero: "981234567" }],
-        produto: [{ nome: "Produto G", preco: 90.0 }],
-        servico: [{ nome: "Serviço D", preco: 55.0 }]
-    },
-    {
-        nome: "Daiene Santos",
-        nomeSocial: "Daiene",
-        genero: "Feminino",
-        cpf: { valor: "555.666.777-88", dataEmissao: "2022-03-30" },
-        rg: [{ valor: "RJ-76.543.210", dataEmissao: "2022-03-25" }],
-        telefone: [{ ddd: "41", numero: "999876543" }],
-        produto: [{ nome: "Produto I", preco: 120.0 }],
-        servico: [{ nome: "Serviço F", preco: 90.0 }]
-    },
-    {
-        nome: "Stella Martins",
-        nomeSocial: "Stella",
-        genero: "Feminino",
-        cpf: { valor: "444.555.666-77", dataEmissao: "2023-01-19" },
-        rg: [{ valor: "RJ-98.765.432", dataEmissao: "2023-01-14" }],
-        telefone: [{ ddd: "51", numero: "998123456" }],
-        produto: [{ nome: "Produto K", preco: 190.0 }],
-        servico: [{ nome: "Serviço H", preco: 170.0 }]
-    },
-    {
-        nome: "Vinah Costa",
-        nomeSocial: "Vinah",
-        genero: "Feminino",
-        cpf: { valor: "222.333.444-55", dataEmissao: "2022-11-14" },
-        rg: [{ valor: "SP-54.321.654", dataEmissao: "2022-11-09" }],
-        telefone: [{ ddd: "61", numero: "912345678" }],
-        produto: [{ nome: "Produto M", preco: 80.0 }],
-        servico: [{ nome: "Serviço J", preco: 50.0 }]
-    }
+    nome: "Sarah Oliveira",
+    nomeSocial: "Sarah",
+    genero: "Feminino",
+    cpf: { valor: "123.321.456-99", dataEmissao: "2017-07-21" },
+    rg: [{ valor: "MG-23.456.789", dataEmissao: "2017-07-18" }],
+    telefone: [{ ddd: "11", numero: "981234567" }],
+    produto: [{ nome: "Produto D", preco: 130.0 }],
+    servico: [{ nome: "Serviço A", preco: 60.0 }]
+  },
+  {
+    nome: "Alinne Costa",
+    nomeSocial: "Alinne",
+    genero: "Feminino",
+    cpf: { valor: "987.654.111-00", dataEmissao: "2019-02-12" },
+    rg: [{ valor: "SP-12.345.678", dataEmissao: "2019-02-08" }],
+    telefone: [{ ddd: "21", numero: "992345678" }],
+    produto: [{ nome: "Produto E", preco: 250.0 }],
+    servico: [{ nome: "Serviço B", preco: 100.0 }]
+  },
+  {
+    nome: "Valdirene Silva",
+    nomeSocial: "Valdirene",
+    genero: "Feminino",
+    cpf: { valor: "111.222.333-44", dataEmissao: "2020-01-15" },
+    rg: [{ valor: "SP-32.654.876", dataEmissao: "2020-01-10" }],
+    telefone: [{ ddd: "22", numero: "981234567" }],
+    produto: [{ nome: "Produto G", preco: 90.0 }],
+    servico: [{ nome: "Serviço D", preco: 55.0 }]
+  },
+  {
+    nome: "Daiene Santos",
+    nomeSocial: "Daiene",
+    genero: "Feminino",
+    cpf: { valor: "555.666.777-88", dataEmissao: "2022-03-30" },
+    rg: [{ valor: "RJ-76.543.210", dataEmissao: "2022-03-25" }],
+    telefone: [{ ddd: "41", numero: "999876543" }],
+    produto: [{ nome: "Produto I", preco: 120.0 }],
+    servico: [{ nome: "Serviço F", preco: 90.0 }]
+  },
+  {
+    nome: "Stella Martins",
+    nomeSocial: "Stella",
+    genero: "Feminino",
+    cpf: { valor: "444.555.666-77", dataEmissao: "2023-01-19" },
+    rg: [{ valor: "RJ-98.765.432", dataEmissao: "2023-01-14" }],
+    telefone: [{ ddd: "51", numero: "998123456" }],
+    produto: [{ nome: "Produto K", preco: 190.0 }],
+    servico: [{ nome: "Serviço H", preco: 170.0 }]
+  },
+  {
+    nome: "Vinah Costa",
+    nomeSocial: "Vinah",
+    genero: "Feminino",
+    cpf: { valor: "222.333.444-55", dataEmissao: "2022-11-14" },
+    rg: [{ valor: "SP-54.321.654", dataEmissao: "2022-11-09" }],
+    telefone: [{ ddd: "61", numero: "912345678" }],
+    produto: [{ nome: "Produto M", preco: 80.0 }],
+    servico: [{ nome: "Serviço J", preco: 50.0 }]
+  }
 ];
 
 type Props = {
@@ -109,10 +108,7 @@ export default function ListagemClientesFemininos({ tema }: Props) {
   const [clientes, setClientes] = useState<ClienteAPI[]>([]);
 
   useEffect(() => {
-    // Não é mais necessário o fetch. Vamos definir os dados manualmente.
     setClientes(clientesFicticios);
-    
-    // Inicializa o componente collapsible do Materialize CSS
     const elems = document.querySelectorAll('.collapsible');
     M.Collapsible.init(elems);
   }, []);
@@ -136,9 +132,7 @@ export default function ListagemClientesFemininos({ tema }: Props) {
                   <p><strong>CPF:</strong> {cliente.cpf.valor}</p>
                   <p><strong>Data de Emissão do CPF:</strong> {new Date(cliente.cpf.dataEmissao).toLocaleDateString()}</p>
                 </div>
-
                 <div className="divider"></div>
-
                 <div className="section">
                   <h6 className="pink-text text-lighten-1">RG(s)</h6>
                   <ul>
@@ -149,9 +143,7 @@ export default function ListagemClientesFemininos({ tema }: Props) {
                     ))}
                   </ul>
                 </div>
-
                 <div className="divider"></div>
-
                 <div className="section">
                   <h6 className="pink-text text-lighten-1">Telefones</h6>
                   <ul>
@@ -162,9 +154,7 @@ export default function ListagemClientesFemininos({ tema }: Props) {
                     ))}
                   </ul>
                 </div>
-
                 <div className="divider"></div>
-
                 <div className="section">
                   <h6 className="pink-text text-lighten-1">Produtos Consumidos</h6>
                   <ul>
@@ -175,9 +165,7 @@ export default function ListagemClientesFemininos({ tema }: Props) {
                     ))}
                   </ul>
                 </div>
-
                 <div className="divider"></div>
-
                 <div className="section">
                   <h6 className="pink-text text-lighten-1">Serviços Consumidos</h6>
                   <ul>
@@ -192,7 +180,6 @@ export default function ListagemClientesFemininos({ tema }: Props) {
             </li>
           ))}
         </ul>
-
         <div className="center-align">
           <a className={`btn-floating btn-large waves-effect waves-light left-align ${tema}`}>
             <i className="material-icons">arrow_back</i>

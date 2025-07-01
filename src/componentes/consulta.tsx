@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import 'materialize-css/dist/css/materialize.min.css';
 import M from 'materialize-css';
-import "../global.css"
-
+import "../styles/global.css";
 import ListagemTodosClientes from "./listagem/clientes/listagemTodosClientes";
 import ListagemTop5Clientes from "./listagem/clientes/listagemTop5Clientes";
 import ListagemClientesMasculinos from "./listagem/clientes/listagemClientesMasculinos";
@@ -37,10 +36,7 @@ export default function Relatórios(data: Props) {
             closeOnClick: true,
             alignment: 'left'
         });
-    }, []);
-
-
-
+    }, [])
 
     const renderComponente = () => {
         switch (componenteVisivel) {
@@ -87,29 +83,25 @@ export default function Relatórios(data: Props) {
         <div className="container" style={{ marginTop: '1rem' }}>
 
             <div className="row">
-                {/* Componente Buscar Serviço */}
                 <div className="col s12 m6 l4 xl4" style={{ padding: '10px' }}>
-                        <div className="card-content">
-                            <BuscarServicoPorNome tema={data.tema} />
-                        </div>
-                </div>
-
-                {/* Componente Buscar Produto */}
-                <div className="col s12 m6 l4 xl4" style={{ padding: '10px' }}>
-                        <div className="card-content">
-                            <BuscarProdutoPorNome tema={data.tema} />
+                    <div className="card-content">
+                        <BuscarServicoPorNome tema={data.tema} />
                     </div>
                 </div>
 
-                {/* Componente Buscar Cliente */}
                 <div className="col s12 m6 l4 xl4" style={{ padding: '10px' }}>
-                        <div className="card-content">
-                            <BuscarClientePorCPF tema={data.tema} />
+                    <div className="card-content">
+                        <BuscarProdutoPorNome tema={data.tema} />
+                    </div>
+                </div>
+
+                <div className="col s12 m6 l4 xl4" style={{ padding: '10px' }}>
+                    <div className="card-content">
+                        <BuscarClientePorCPF tema={data.tema} />
                     </div>
                 </div>
             </div>
             <div className="row center-align">
-                {/* Menu Clientes */}
                 <div className="col s12 m4" style={{ marginTop: '1rem' }}>
                     <a className={`dropdown-trigger btn ${data.tema} white-text`} href='#' data-target='dropdown-clientes'>
                         Menu Clientes
@@ -124,7 +116,6 @@ export default function Relatórios(data: Props) {
                     </ul>
                 </div>
 
-                {/* Menu Produtos */}
                 <div className="col s12 m4" style={{ marginTop: '1rem' }}>
                     <a className={`dropdown-trigger btn ${data.tema} white-text`} href='#' data-target='dropdown-produtos'>
                         Menu Produtos
@@ -137,7 +128,6 @@ export default function Relatórios(data: Props) {
                     </ul>
                 </div>
 
-                {/* Menu Serviços */}
                 <div className="col s12 m4" style={{ marginTop: '1rem' }}>
                     <a className={`dropdown-trigger btn ${data.tema} white-text`} href='#' data-target='dropdown-servicos'>
                         Menu Serviços

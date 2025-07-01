@@ -2,13 +2,12 @@ import { useEffect, useState } from 'react';
 import 'materialize-css/dist/css/materialize.min.css';
 import M from 'materialize-css';
 import Produto from "../../../modelo/Produto";
-import "../../../global.css"
+import "../../../styles/global.css";
 
 interface Props {
   tema: string;
 }
 
-// Dados fictícios para produtos
 const produtosFicticios: Produto[] = [
   new Produto("Shampoo", 29.9),
   new Produto("Condicionador", 35.5),
@@ -26,13 +25,10 @@ export default function ListagemTodosProdutos({ tema }: Props) {
   const [produtos, setProdutos] = useState<Produto[]>([]);
   const [erro, setErro] = useState<string | null>(null);
 
-  // Em vez de fazer a requisição, usamos os dados locais
   useEffect(() => {
-    // Simula a busca de dados da API com os dados fictícios
     setProdutos(produtosFicticios);
   }, []);
 
-  // Inicializa o collapsible sempre que os produtos mudarem
   useEffect(() => {
     const elems = document.querySelectorAll('.collapsible');
     M.Collapsible.init(elems);

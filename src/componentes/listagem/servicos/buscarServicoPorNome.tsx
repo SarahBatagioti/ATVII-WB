@@ -1,7 +1,7 @@
 import { useState, ChangeEvent } from "react";
 import 'materialize-css/dist/css/materialize.min.css';
 import M from 'materialize-css';
-import "../../../global.css"
+import "../../../styles/global.css";
 
 interface Servico {
   id: number;
@@ -13,7 +13,6 @@ interface Props {
   tema: string;
 }
 
-// Dados fictícios de serviços de beleza
 const servicosDeBelezaFicticios: Servico[] = [
   { id: 1, nome: "Corte de Cabelo", preco: 80.0 },
   { id: 2, nome: "Manicure", preco: 40.0 },
@@ -45,7 +44,6 @@ export default function BuscarServicoPorNome({ tema }: Props) {
       return;
     }
 
-    // Busca o serviço na lista fictícia
     const servicoEncontrado = servicosDeBelezaFicticios.find(s =>
       s.nome.toLowerCase().includes(nomeFormatado)
     );

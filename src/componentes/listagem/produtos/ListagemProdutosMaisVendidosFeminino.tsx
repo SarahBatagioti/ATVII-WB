@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import 'materialize-css/dist/css/materialize.min.css';
 import M from 'materialize-css';
-import "../../../global.css"
+import "../../../styles/global.css";
 
 interface ProdutoMaisVendido {
   id: number;
@@ -14,7 +14,6 @@ interface Props {
   tema: string;
 }
 
-// Dados fictícios para produtos mais vendidos para o gênero feminino
 const produtosMaisVendidosFemininoFicticios: ProdutoMaisVendido[] = [
   { id: 1, nome: "Shampoo", preco: 29.9, totalClientes: 1200 },
   { id: 2, nome: "Condicionador", preco: 35.5, totalClientes: 1000 },
@@ -33,7 +32,6 @@ export default function ListagemProdutosMaisVendidosFeminino({ tema }: Props) {
   const [erro, setErro] = useState<string | null>(null);
 
   useEffect(() => {
-    // Usando dados locais (fictícios) em vez da requisição
     setProdutos(produtosMaisVendidosFemininoFicticios);
   }, []);
 
