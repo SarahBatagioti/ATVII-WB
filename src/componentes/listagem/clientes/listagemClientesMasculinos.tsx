@@ -3,6 +3,50 @@ import 'materialize-css/dist/css/materialize.min.css';
 import M from 'materialize-css';
 import "../../../global.css"
 
+// Substituindo os dados fictícios diretamente no código
+const clientesMasculinosFicticios = [
+  {
+    nome: "Vinicius Lima",
+    nomeSocial: "Vinicius",
+    genero: "Masculino",
+    cpf: { valor: "321.654.987-11", dataEmissao: "2021-10-10" },
+    rg: [{ valor: "RJ-65.432.198", dataEmissao: "2021-10-05" }],
+    telefone: [{ ddd: "31", numero: "991234567" }],
+    produto: [{ nome: "Produto F", preco: 180.0 }],
+    servico: [{ nome: "Serviço C", preco: 110.0 }]
+  },
+  {
+    nome: "Marcos Pereira",
+    nomeSocial: "Marcos",
+    genero: "Masculino",
+    cpf: { valor: "789.654.321-00", dataEmissao: "2016-08-25" },
+    rg: [{ valor: "MG-45.678.901", dataEmissao: "2016-08-20" }],
+    telefone: [{ ddd: "11", numero: "987123456" }],
+    produto: [{ nome: "Produto H", preco: 200.0 }],
+    servico: [{ nome: "Serviço E", preco: 150.0 }]
+  },
+  {
+    nome: "Juares Souza",
+    nomeSocial: "Juares",
+    genero: "Masculino",
+    cpf: { valor: "333.444.555-66", dataEmissao: "2018-05-17" },
+    rg: [{ valor: "SP-87.654.321", dataEmissao: "2018-05-12" }],
+    telefone: [{ ddd: "21", numero: "998765432" }],
+    produto: [{ nome: "Produto J", preco: 220.0 }],
+    servico: [{ nome: "Serviço G", preco: 130.0 }]
+  },
+  {
+    nome: "Liam Ribeiro",
+    nomeSocial: "Liam",
+    genero: "Masculino",
+    cpf: { valor: "555.777.888-99", dataEmissao: "2021-09-09" },
+    rg: [{ valor: "MG-54.321.987", dataEmissao: "2021-09-04" }],
+    telefone: [{ ddd: "62", numero: "983456789" }],
+    produto: [{ nome: "Produto L", preco: 300.0 }],
+    servico: [{ nome: "Serviço I", preco: 200.0 }]
+  },
+];
+
 type Props = {
   tema: string;
 };
@@ -28,7 +72,6 @@ interface Servico {
 }
 
 interface ClienteAPI {
-  id: number;
   nome: string;
   nomeSocial: string;
   genero: string;
@@ -46,15 +89,12 @@ export default function ListagemClientesMasculinos({ tema }: Props) {
   const [clientes, setClientes] = useState<ClienteAPI[]>([]);
 
   useEffect(() => {
+    // Não é mais necessário o fetch. Vamos definir os dados manualmente.
+    setClientes(clientesMasculinosFicticios);
+
+    // Inicializa o componente collapsible do Materialize CSS
     const elems = document.querySelectorAll('.collapsible');
     M.Collapsible.init(elems);
-
-    fetch("http://localhost:3307/clientes/genero/Masculino")
-      .then(res => res.json())
-      .then(data => setClientes(data))
-      .catch(() => {
-        M.toast({ html: "Erro ao buscar clientes!", classes: "red darken-2" });
-      });
   }, []);
 
   return (

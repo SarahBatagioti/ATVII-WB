@@ -14,18 +14,27 @@ interface Props {
   tema: string;
 }
 
+// Dados fictícios para produtos mais vendidos
+const produtosMaisVendidosFicticios: ProdutoMaisVendido[] = [
+  { id: 1, nome: "Shampoo", preco: 29.9, quantidadeVendida: 1200 },
+  { id: 2, nome: "Condicionador", preco: 35.5, quantidadeVendida: 1000 },
+  { id: 3, nome: "Pomada", preco: 22.0, quantidadeVendida: 950 },
+  { id: 4, nome: "Creme corporal", preco: 40.0, quantidadeVendida: 800 },
+  { id: 5, nome: "Gel de cabelo", preco: 18.0, quantidadeVendida: 750 },
+  { id: 6, nome: "Máscara capilar", preco: 50.0, quantidadeVendida: 700 },
+  { id: 7, nome: "Esfoliante facial", preco: 45.0, quantidadeVendida: 680 },
+  { id: 8, nome: "Hidratante facial", preco: 60.0, quantidadeVendida: 650 },
+  { id: 9, nome: "Pó compacto", preco: 80.0, quantidadeVendida: 600 },
+  { id: 10, nome: "Rímel", preco: 45.0, quantidadeVendida: 550 },
+];
+
 export default function ListagemProdutosMaisVendidos({ tema }: Props) {
   const [produtos, setProdutos] = useState<ProdutoMaisVendido[]>([]);
   const [erro, setErro] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch("http://localhost:3307/produtos/maisVendidos")
-      .then((res) => {
-        if (!res.ok) throw new Error("Erro ao buscar produtos mais vendidos");
-        return res.json();
-      })
-      .then((data) => setProdutos(data))
-      .catch(() => setErro("Não foi possível carregar os produtos mais vendidos."));
+    // Em vez de fazer a requisição, usamos dados locais (fictícios)
+    setProdutos(produtosMaisVendidosFicticios);
   }, []);
 
   useEffect(() => {

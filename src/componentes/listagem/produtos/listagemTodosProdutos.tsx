@@ -8,26 +8,28 @@ interface Props {
   tema: string;
 }
 
+// Dados fictícios para produtos
+const produtosFicticios: Produto[] = [
+  new Produto("Shampoo", 29.9),
+  new Produto("Condicionador", 35.5),
+  new Produto("Pomada", 22.0),
+  new Produto("Creme Corporal", 40.0),
+  new Produto("Gel de Cabelo", 18.0),
+  new Produto("Máscara Capilar", 50.0),
+  new Produto("Esfoliante Facial", 45.0),
+  new Produto("Hidratante Facial", 60.0),
+  new Produto("Pó Compacto", 80.0),
+  new Produto("Rímel", 45.0)
+];
+
 export default function ListagemTodosProdutos({ tema }: Props) {
   const [produtos, setProdutos] = useState<Produto[]>([]);
   const [erro, setErro] = useState<string | null>(null);
 
-  // Busca os produtos da API
+  // Em vez de fazer a requisição, usamos os dados locais
   useEffect(() => {
-    fetch("http://localhost:3307/produtos")
-      .then((res) => {
-        if (!res.ok) throw new Error("Erro ao buscar produtos");
-        return res.json();
-      })
-      .then((data) => {
-        const lista = data.map(
-          (prod: any) => new Produto(prod.nome, prod.preco)
-        );
-        setProdutos(lista);
-      })
-      .catch(() => {
-        setErro("Não foi possível carregar os produtos.");
-      });
+    // Simula a busca de dados da API com os dados fictícios
+    setProdutos(produtosFicticios);
   }, []);
 
   // Inicializa o collapsible sempre que os produtos mudarem

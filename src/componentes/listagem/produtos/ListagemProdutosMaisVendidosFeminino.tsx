@@ -14,18 +14,27 @@ interface Props {
   tema: string;
 }
 
+// Dados fictícios para produtos mais vendidos para o gênero feminino
+const produtosMaisVendidosFemininoFicticios: ProdutoMaisVendido[] = [
+  { id: 1, nome: "Shampoo", preco: 29.9, totalClientes: 1200 },
+  { id: 2, nome: "Condicionador", preco: 35.5, totalClientes: 1000 },
+  { id: 3, nome: "Pomada", preco: 22.0, totalClientes: 950 },
+  { id: 4, nome: "Creme corporal", preco: 40.0, totalClientes: 800 },
+  { id: 5, nome: "Gel de cabelo", preco: 18.0, totalClientes: 750 },
+  { id: 6, nome: "Máscara capilar", preco: 50.0, totalClientes: 700 },
+  { id: 7, nome: "Esfoliante facial", preco: 45.0, totalClientes: 680 },
+  { id: 8, nome: "Hidratante facial", preco: 60.0, totalClientes: 650 },
+  { id: 9, nome: "Pó compacto", preco: 80.0, totalClientes: 600 },
+  { id: 10, nome: "Rímel", preco: 45.0, totalClientes: 550 },
+];
+
 export default function ListagemProdutosMaisVendidosFeminino({ tema }: Props) {
   const [produtos, setProdutos] = useState<ProdutoMaisVendido[]>([]);
   const [erro, setErro] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch("http://localhost:3307/produtos/maisVendidosPorGenero/Feminino")
-      .then((res) => {
-        if (!res.ok) throw new Error("Erro ao buscar produtos mais vendidos para o gênero Feminino");
-        return res.json();
-      })
-      .then((data) => setProdutos(data))
-      .catch(() => setErro("Não foi possível carregar os produtos mais vendidos por gênero."));
+    // Usando dados locais (fictícios) em vez da requisição
+    setProdutos(produtosMaisVendidosFemininoFicticios);
   }, []);
 
   useEffect(() => {

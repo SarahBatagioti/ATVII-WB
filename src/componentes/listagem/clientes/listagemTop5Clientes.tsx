@@ -14,19 +14,50 @@ interface ClienteTopGasto {
     valorTotalGasto: number;
 }
 
+// Dados fictícios
+const clientesTopGastoFicticios: ClienteTopGasto[] = [
+    {
+        id: 1,
+        nome: "Sarah Oliveira",
+        nomeSocial: "Sarah",
+        valorTotalGasto: 1500.75
+    },
+    {
+        id: 2,
+        nome: "Alinne Costa",
+        nomeSocial: "Alinne",
+        valorTotalGasto: 2000.00
+    },
+    {
+        id: 3,
+        nome: "Vinicius Lima",
+        nomeSocial: "Vinicius",
+        valorTotalGasto: 1200.50
+    },
+    {
+        id: 4,
+        nome: "Marcos Pereira",
+        nomeSocial: "Marcos",
+        valorTotalGasto: 1700.25
+    },
+    {
+        id: 5,
+        nome: "Juares Souza",
+        nomeSocial: "Juares",
+        valorTotalGasto: 1300.90
+    }
+];
+
 export default function ListagemTop5Clientes({ tema }: Props) {
     const [clientes, setClientes] = useState<ClienteTopGasto[]>([]);
 
     useEffect(() => {
+        // Inicializa o colapsável do Materialize
         const elems = document.querySelectorAll('.collapsible');
         M.Collapsible.init(elems);
 
-        fetch("http://localhost:3307/clientes/topGasto")
-            .then(res => res.json())
-            .then(data => setClientes(data))
-            .catch(() =>
-                M.toast({ html: "Erro ao buscar clientes!", classes: "red darken-2" })
-            );
+        // Substitui o fetch com dados locais
+        setClientes(clientesTopGastoFicticios);
     }, []);
 
     return (

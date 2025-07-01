@@ -1,5 +1,5 @@
 
-![Banner](./front/public/images/BannerWB.png)
+![Banner](./public/images/BannerWB.png)
 
 # Configurações do Projeto
 

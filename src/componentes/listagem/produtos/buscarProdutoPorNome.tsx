@@ -13,6 +13,21 @@ interface Props {
   tema: string;
 }
 
+// Dados fictícios de produtos de beleza
+const produtosDeBelezaFicticios: Produto[] = [
+  { id: 1, nome: "Shampoo", preco: 29.9 },
+  { id: 2, nome: "Condicionador", preco: 35.5 },
+  { id: 3, nome: "Pomada", preco: 22.0 },
+  { id: 4, nome: "Creme corporal", preco: 40.0 },
+  { id: 5, nome: "Gel de cabelo", preco: 18.0 },
+  { id: 6, nome: "Máscara capilar", preco: 50.0 },
+  { id: 7, nome: "Esfoliante facial", preco: 45.0 },
+  { id: 8, nome: "Hidratante facial", preco: 60.0 },
+  { id: 9, nome: "Pó compacto", preco: 80.0 },
+  { id: 10, nome: "Rímel", preco: 45.0 },
+  { id: 11, nome: "Base líquida", preco: 70.0 },
+];
+
 export default function BuscarProdutoPorNome({ tema }: Props) {
   const [nomeBusca, setNomeBusca] = useState("");
   const [produto, setProduto] = useState<Produto | null>(null);
@@ -24,23 +39,23 @@ export default function BuscarProdutoPorNome({ tema }: Props) {
     setProduto(null);
   };
 
-  const buscarProduto = async () => {
-    const nomeFormatado = nomeBusca.trim();
+  const buscarProduto = () => {
+    const nomeFormatado = nomeBusca.trim().toLowerCase();
     if (!nomeFormatado) {
       setErro("Digite um nome válido");
       return;
     }
 
-    try {
-      const response = await fetch(`http://localhost:3307/produtos/${nomeFormatado}`);
-      if (!response.ok) {
-        throw new Error("Produto não encontrado");
-      }
+    // Busca o produto na lista fictícia
+    const produtoEncontrado = produtosDeBelezaFicticios.find(p =>
+      p.nome.toLowerCase().includes(nomeFormatado)
+    );
 
-      const data: Produto = await response.json();
-      setProduto(data);
-    } catch (error: any) {
-      setErro(error.message || "Erro ao buscar produto");
+    if (produtoEncontrado) {
+      setProduto(produtoEncontrado);
+    } else {
+      setErro("Produto não encontrado");
+      setProduto(null);
     }
   };
 

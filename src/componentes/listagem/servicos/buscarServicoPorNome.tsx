@@ -2,6 +2,7 @@ import { useState, ChangeEvent } from "react";
 import 'materialize-css/dist/css/materialize.min.css';
 import M from 'materialize-css';
 import "../../../global.css"
+
 interface Servico {
   id: number;
   nome: string;
@@ -11,6 +12,20 @@ interface Servico {
 interface Props {
   tema: string;
 }
+
+// Dados fictícios de serviços de beleza
+const servicosDeBelezaFicticios: Servico[] = [
+  { id: 1, nome: "Corte de Cabelo", preco: 80.0 },
+  { id: 2, nome: "Manicure", preco: 40.0 },
+  { id: 3, nome: "Pedicure", preco: 45.0 },
+  { id: 4, nome: "Depilação", preco: 60.0 },
+  { id: 5, nome: "Maquiagem", preco: 100.0 },
+  { id: 6, nome: "Tratamento Facial", preco: 120.0 },
+  { id: 7, nome: "Penteado", preco: 90.0 },
+  { id: 8, nome: "Alisamento", preco: 150.0 },
+  { id: 9, nome: "Hidratação Capilar", preco: 70.0 },
+  { id: 10, nome: "Design de Sobrancelhas", preco: 50.0 }
+];
 
 export default function BuscarServicoPorNome({ tema }: Props) {
   const [nomeBusca, setNomeBusca] = useState("");
@@ -23,23 +38,23 @@ export default function BuscarServicoPorNome({ tema }: Props) {
     setServico(null);
   };
 
-  const buscarServico = async () => {
-    const nomeFormatado = nomeBusca.trim();
+  const buscarServico = () => {
+    const nomeFormatado = nomeBusca.trim().toLowerCase();
     if (!nomeFormatado) {
       setErro("Digite um nome válido");
       return;
     }
 
-    try {
-      const response = await fetch(`http://localhost:3307/servicos/${nomeFormatado}`);
-      if (!response.ok) {
-        throw new Error("Serviço não encontrado");
-      }
+    // Busca o serviço na lista fictícia
+    const servicoEncontrado = servicosDeBelezaFicticios.find(s =>
+      s.nome.toLowerCase().includes(nomeFormatado)
+    );
 
-      const data: Servico = await response.json();
-      setServico(data);
-    } catch (error: any) {
-      setErro(error.message || "Erro ao buscar serviço");
+    if (servicoEncontrado) {
+      setServico(servicoEncontrado);
+    } else {
+      setErro("Serviço não encontrado");
+      setServico(null);
     }
   };
 

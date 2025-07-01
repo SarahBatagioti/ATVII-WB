@@ -14,19 +14,43 @@ interface ClienteMaisConsumidor {
   totalConsumido: number;
 }
 
+// Dados fictícios para clientes que mais consumiram e menos consumiram
+const clientesTop10MaisConsumiram: ClienteMaisConsumidor[] = [
+  { id: 1, nome: "Sarah Oliveira", nomeSocial: "Sarah", totalConsumido: 3000 },
+  { id: 2, nome: "Alinne Costa", nomeSocial: "Alinne", totalConsumido: 2500 },
+  { id: 3, nome: "Vinicius Lima", nomeSocial: "Vinicius", totalConsumido: 2000 },
+  { id: 4, nome: "Marcos Pereira", nomeSocial: "Marcos", totalConsumido: 1800 },
+  { id: 5, nome: "Juares Souza", nomeSocial: "Juares", totalConsumido: 1500 },
+  { id: 6, nome: "Stella Martins", nomeSocial: "Stella", totalConsumido: 1400 },
+  { id: 7, nome: "Liam Ribeiro", nomeSocial: "Liam", totalConsumido: 1300 },
+  { id: 8, nome: "Carlos Oliveira", nomeSocial: "Carlos", totalConsumido: 1200 },
+  { id: 9, nome: "Valdirene Silva", nomeSocial: "Valdirene", totalConsumido: 1100 },
+  { id: 10, nome: "Daiene Santos", nomeSocial: "Daiene", totalConsumido: 1000 }
+];
+
+const clientesTop10MenosConsumiram: ClienteMaisConsumidor[] = [
+  { id: 1, nome: "João Silva", nomeSocial: "João", totalConsumido: 50 },
+  { id: 2, nome: "Carlos Oliveira", nomeSocial: "Carlos", totalConsumido: 60 },
+  { id: 3, nome: "Vinah Costa", nomeSocial: "Vinah", totalConsumido: 70 },
+  { id: 4, nome: "Juares Souza", nomeSocial: "Juares", totalConsumido: 80 },
+  { id: 5, nome: "Marcos Pereira", nomeSocial: "Marcos", totalConsumido: 100 },
+  { id: 6, nome: "Stella Martins", nomeSocial: "Stella", totalConsumido: 120 },
+  { id: 7, nome: "Alinne Costa", nomeSocial: "Alinne", totalConsumido: 150 },
+  { id: 8, nome: "Sarah Oliveira", nomeSocial: "Sarah", totalConsumido: 180 },
+  { id: 9, nome: "Daiene Santos", nomeSocial: "Daiene", totalConsumido: 200 },
+  { id: 10, nome: "Liam Ribeiro", nomeSocial: "Liam", totalConsumido: 220 }
+];
+
 export function ListagemTop10ClientesMaisConsumiram({ tema }: Props) {
   const [clientes, setClientes] = useState<ClienteMaisConsumidor[]>([]);
 
   useEffect(() => {
+    // Inicializa o colapsável do Materialize
     const elems = document.querySelectorAll('.collapsible');
     M.Collapsible.init(elems);
 
-    fetch("http://localhost:3307/clientes/topMaioresConsumidoresQuantidade")
-      .then((res) => res.json())
-      .then((data) => setClientes(data))
-      .catch(() =>
-        M.toast({ html: "Erro ao buscar clientes!", classes: "red darken-2" })
-      );
+    // Usando dados locais (fictícios)
+    setClientes(clientesTop10MaisConsumiram);
   }, []);
 
   return (
@@ -44,7 +68,7 @@ export function ListagemTop10ClientesMaisConsumiram({ tema }: Props) {
               </div>
               <div className="collapsible-body">
                 <p><strong>Nome Social:</strong> {cliente.nomeSocial}</p>
-                <p><strong>Total Consumido:</strong> {cliente.totalConsumido}</p>
+                <p><strong>Total Consumido:</strong> R$ {cliente.totalConsumido}</p>
               </div>
             </li>
           ))}
@@ -58,15 +82,12 @@ export function ListagemTop10ClientesMenosConsumiram({ tema }: Props) {
   const [clientes, setClientes] = useState<ClienteMaisConsumidor[]>([]);
 
   useEffect(() => {
+    // Inicializa o colapsável do Materialize
     const elems = document.querySelectorAll('.collapsible');
     M.Collapsible.init(elems);
 
-    fetch("http://localhost:3307/clientes/topMenoresConsumidoresQuantidade")
-      .then((res) => res.json())
-      .then((data) => setClientes(data))
-      .catch(() =>
-        M.toast({ html: "Erro ao buscar clientes!", classes: "red darken-2" })
-      );
+    // Usando dados locais (fictícios)
+    setClientes(clientesTop10MenosConsumiram);
   }, []);
 
   return (
@@ -84,7 +105,7 @@ export function ListagemTop10ClientesMenosConsumiram({ tema }: Props) {
               </div>
               <div className="collapsible-body">
                 <p><strong>Nome Social:</strong> {cliente.nomeSocial}</p>
-                <p><strong>Total Consumido:</strong> {cliente.totalConsumido}</p>
+                <p><strong>Total Consumido:</strong> R$ {cliente.totalConsumido}</p>
               </div>
             </li>
           ))}

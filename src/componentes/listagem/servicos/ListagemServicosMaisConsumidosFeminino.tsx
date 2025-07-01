@@ -14,18 +14,27 @@ interface Props {
   tema: string;
 }
 
+// Dados fictícios de serviços mais consumidos para o gênero feminino
+const servicosMaisConsumidosFemininoFicticios: ServicoMaisConsumido[] = [
+  { id: 1, nome: "Manicure", preco: 40.0, totalClientes: 1500 },
+  { id: 2, nome: "Corte de Cabelo", preco: 80.0, totalClientes: 1200 },
+  { id: 3, nome: "Pedicure", preco: 45.0, totalClientes: 1100 },
+  { id: 4, nome: "Hidratação Capilar", preco: 70.0, totalClientes: 900 },
+  { id: 5, nome: "Maquiagem", preco: 100.0, totalClientes: 800 },
+  { id: 6, nome: "Design de Sobrancelhas", preco: 50.0, totalClientes: 750 },
+  { id: 7, nome: "Depilação", preco: 60.0, totalClientes: 700 },
+  { id: 8, nome: "Tratamento Facial", preco: 120.0, totalClientes: 680 },
+  { id: 9, nome: "Alisamento", preco: 150.0, totalClientes: 650 },
+  { id: 10, nome: "Penteado", preco: 90.0, totalClientes: 600 },
+];
+
 export default function ListagemServicosMaisConsumidosFeminino({ tema }: Props) {
   const [servicos, setServicos] = useState<ServicoMaisConsumido[]>([]);
   const [erro, setErro] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch("http://localhost:3307/servicos/maisVendidosPorGenero/Feminino")
-      .then((res) => {
-        if (!res.ok) throw new Error("Erro ao buscar serviços para o gênero Feminino");
-        return res.json();
-      })
-      .then((data) => setServicos(data))
-      .catch(() => setErro("Não foi possível carregar os serviços mais consumidos."));
+    // Em vez de fazer a requisição, usamos os dados locais
+    setServicos(servicosMaisConsumidosFemininoFicticios);
   }, []);
 
   useEffect(() => {

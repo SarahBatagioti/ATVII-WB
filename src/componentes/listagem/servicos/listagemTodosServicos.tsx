@@ -8,26 +8,27 @@ interface Props {
   tema: string;
 }
 
+// Dados fictícios de serviços
+const servicosFicticios: Servico[] = [
+  new Servico("Corte de Cabelo", 80.0),
+  new Servico("Manicure", 40.0),
+  new Servico("Pedicure", 45.0),
+  new Servico("Design de Sobrancelhas", 50.0),
+  new Servico("Maquiagem", 100.0),
+  new Servico("Hidratação Capilar", 70.0),
+  new Servico("Corte e Penteado", 120.0),
+  new Servico("Depilação", 60.0),
+  new Servico("Alisamento", 150.0),
+  new Servico("Penteado", 90.0)
+];
+
 export default function ListagemTodosServicos({ tema }: Props) {
   const [servicos, setServicos] = useState<Servico[]>([]);
   const [erro, setErro] = useState<string | null>(null);
 
-  // Busca os serviços da API
+  // Em vez de fazer a requisição, usamos os dados locais (fictícios)
   useEffect(() => {
-    fetch("http://localhost:3307/servicos")
-      .then((res) => {
-        if (!res.ok) throw new Error("Erro ao buscar serviços");
-        return res.json();
-      })
-      .then((data) => {
-        const lista = data.map(
-          (serv: any) => new Servico(serv.nome, serv.preco)
-        );
-        setServicos(lista);
-      })
-      .catch(() => {
-        setErro("Não foi possível carregar os serviços.");
-      });
+    setServicos(servicosFicticios);
   }, []);
 
   // Inicializa o collapsible sempre que os serviços mudarem

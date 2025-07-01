@@ -14,18 +14,27 @@ interface Props {
   tema: string;
 }
 
+// Dados fictícios de serviços mais vendidos
+const servicosMaisVendidosFicticios: ServicoMaisVendido[] = [
+  { id: 1, nome: "Corte de Cabelo", preco: 80.0, quantidadeVendida: 1500 },
+  { id: 2, nome: "Manicure", preco: 40.0, quantidadeVendida: 1200 },
+  { id: 3, nome: "Pedicure", preco: 45.0, quantidadeVendida: 1100 },
+  { id: 4, nome: "Design de Sobrancelhas", preco: 50.0, quantidadeVendida: 1000 },
+  { id: 5, nome: "Tratamento Facial", preco: 100.0, quantidadeVendida: 950 },
+  { id: 6, nome: "Hidratação Capilar", preco: 70.0, quantidadeVendida: 900 },
+  { id: 7, nome: "Corte e Penteado", preco: 120.0, quantidadeVendida: 850 },
+  { id: 8, nome: "Depilação", preco: 60.0, quantidadeVendida: 800 },
+  { id: 9, nome: "Alisamento", preco: 150.0, quantidadeVendida: 750 },
+  { id: 10, nome: "Maquiagem", preco: 130.0, quantidadeVendida: 700 }
+];
+
 export default function ListagemServicosMaisVendidos({ tema }: Props) {
   const [servicos, setServicos] = useState<ServicoMaisVendido[]>([]);
   const [erro, setErro] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch("http://localhost:3307/servicos/maisVendidos")
-      .then((res) => {
-        if (!res.ok) throw new Error("Erro ao buscar serviços mais vendidos");
-        return res.json();
-      })
-      .then((data) => setServicos(data))
-      .catch(() => setErro("Não foi possível carregar os serviços mais vendidos."));
+    // Usando dados locais (fictícios) em vez da requisição
+    setServicos(servicosMaisVendidosFicticios);
   }, []);
 
   useEffect(() => {
